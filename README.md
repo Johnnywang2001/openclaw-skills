@@ -60,22 +60,33 @@ Restructures your agent into an orchestrator pattern — the main session stays 
 
 If you use multiple LLM models, switching between them mid-session can cause crashes and context loss. This guide explains the four root causes and six config-level fixes.
 
-### ⚡ One-Prompt Setup (All Upgrades)
+### ⚡ One-Prompt Setup (All 4 Upgrades)
 
-Paste this into your OpenClaw agent to implement the Memory and Context upgrades automatically:
+Paste this into your OpenClaw agent to implement all four upgrades automatically:
 
 ```
-Implement both the OpenClaw Memory Upgrade and Context Upgrade on this system. Read the guides at:
-- ~/.openclaw/workspace/guides/memory-upgrade/SKILL.md
-- ~/.openclaw/workspace/guides/context-upgrade/SKILL.md
+Implement all four OpenClaw upgrades on this system. Read and follow each guide:
 
-For the Memory Upgrade: implement all 5 upgrades (skip Cognee/upgrade 6).
-For the Context Upgrade: implement all 5 upgrades.
+1. REASONING UPGRADE — Install the skill:
+   cp -r skills/reasoning-upgrade ~/.openclaw/workspace/skills/
+   (from the openclaw-skills repo, or read ~/.openclaw/workspace/skills/reasoning-upgrade/SKILL.md if already installed)
 
-Merge all config changes into openclaw.json without overwriting existing settings.
-Add all AGENTS.md instructions.
-Install the Mem0 plugin.
-Restart the gateway.
+2. MEMORY UPGRADE — Read ~/.openclaw/workspace/guides/memory-upgrade/SKILL.md
+   Implement all 5 upgrades (skip Cognee/upgrade 6).
+   Install the Mem0 plugin: openclaw plugin install @mem0/openclaw-mem0
+
+3. CONTEXT UPGRADE — Read ~/.openclaw/workspace/guides/context-upgrade/SKILL.md
+   Implement all 5 upgrades. Add delegation rules and pipeline pattern to AGENTS.md.
+
+4. SEAMLESS MODEL SWITCHING — Read ~/.openclaw/workspace/guides/seamless-model-switching/article.md
+   Apply Fix 1 (standardize context windows), Fix 3 (fallback chains), Fix 5 (compaction thresholds), and Fix 6 (context pruning).
+
+For all upgrades:
+- Merge config changes into openclaw.json without overwriting existing settings.
+- Add all AGENTS.md instructions.
+- Restart the gateway: openclaw gateway restart
+- Verify: openclaw status
+
 Report what you changed when done. Do not ask for permission at each step — execute the full upgrade.
 ```
 
