@@ -6,13 +6,17 @@ Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
 
 ---
 
-## 🧠 First: Upgrade Your Agent's Memory
+## 🚀 First: Upgrade Your Agent
 
-Before installing any skills, upgrade your OpenClaw agent's memory system. This is not a skill — it's a setup guide that transforms your agent from forgetting everything between sessions to having persistent, searchable memory.
+Before installing any skills, apply these two foundational upgrades. These are not skills — they're setup guides that fundamentally improve how your agent thinks and remembers.
+
+You can implement both automatically with a single prompt (see below), or follow each guide manually.
+
+### 🧠 Memory Upgrade — Make Your Agent Remember
 
 **[→ OpenClaw Memory Upgrade Guide](skills/openclaw-memory-upgrade/SKILL.md)**
 
-This guide walks you through 6 upgrades:
+Transforms your agent from forgetting everything between sessions to having persistent, searchable memory across 6 upgrades:
 
 1. **Enhanced memoryFlush** — automatically saves 8 categories of important info before context is lost
 2. **Session indexing** — makes past conversations searchable
@@ -21,7 +25,38 @@ This guide walks you through 6 upgrades:
 5. **Mem0 plugin** — auto-capture and auto-recall of memories
 6. **Cognee** (optional) — graph-based memory (requires Docker)
 
-**This is a manual setup.** You'll need to copy the JSON config blocks from the guide into your `openclaw.json` file and install the Mem0 plugin. The guide explains every step and every config field.
+### 🧹 Context Upgrade — Make Your Agent Think Efficiently
+
+**[→ OpenClaw Context Upgrade Guide](skills/openclaw-context-upgrade/SKILL.md)**
+
+Restructures your agent into an orchestrator pattern — the main session stays lean for conversation while sub-agents handle all the heavy lifting:
+
+1. **Orchestrator delegation** — agent delegates research, coding, and file operations to sub-agents
+2. **Sub-agent concurrency** — up to 8 parallel sub-agents for complex tasks
+3. **Compaction safeguards** — higher thresholds to preserve conversation detail
+4. **Context pruning** — automatically drops old context with TTL
+5. **Pipeline pattern** — reusable PM → Workers → QA pattern for multi-step tasks
+
+### ⚡ One-Prompt Setup (Both Upgrades)
+
+Paste this into your OpenClaw agent to implement everything automatically:
+
+```
+Implement both the OpenClaw Memory Upgrade and Context Upgrade on this system. Read the guides at:
+- ~/.openclaw/workspace/skills/openclaw-memory-upgrade/SKILL.md
+- ~/.openclaw/workspace/skills/openclaw-context-upgrade/SKILL.md
+
+For the Memory Upgrade: implement all 5 upgrades (skip Cognee/upgrade 6).
+For the Context Upgrade: implement all 5 upgrades.
+
+Merge all config changes into openclaw.json without overwriting existing settings.
+Add all AGENTS.md instructions.
+Install the Mem0 plugin.
+Restart the gateway.
+Report what you changed when done. Do not ask for permission at each step — execute the full upgrade.
+```
+
+**These are manual setup guides.** You'll need to copy the JSON config blocks from each guide into your `openclaw.json` file, or use the one-prompt setup above to have your agent do it for you.
 
 ---
 
