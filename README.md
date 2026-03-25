@@ -62,23 +62,27 @@ If you use multiple LLM models, switching between them mid-session can cause cra
 
 ### ⚡ One-Prompt Setup (All 4 Upgrades)
 
-Paste this into your OpenClaw agent to implement all four upgrades automatically:
+First, clone the repo into your workspace:
+```bash
+git clone https://github.com/Johnnywang2001/openclaw-skills.git ~/.openclaw/workspace/openclaw-skills
+```
+
+Then paste this into your OpenClaw agent:
 
 ```
-Implement all four OpenClaw upgrades on this system. Read and follow each guide:
+Implement all four OpenClaw upgrades on this system. The guides are at ~/.openclaw/workspace/openclaw-skills. Read and follow each guide:
 
-1. REASONING UPGRADE — Install the skill:
-   cp -r skills/reasoning-upgrade ~/.openclaw/workspace/skills/
-   (from the openclaw-skills repo, or read ~/.openclaw/workspace/skills/reasoning-upgrade/SKILL.md if already installed)
+1. REASONING UPGRADE — Copy the skill into the workspace:
+   cp -r ~/.openclaw/workspace/openclaw-skills/skills/reasoning-upgrade ~/.openclaw/workspace/skills/
 
-2. MEMORY UPGRADE — Read ~/.openclaw/workspace/guides/memory-upgrade/SKILL.md
+2. MEMORY UPGRADE — Read ~/.openclaw/workspace/openclaw-skills/guides/memory-upgrade/SKILL.md
    Implement all 5 upgrades (skip Cognee/upgrade 6).
    Install the Mem0 plugin: openclaw plugin install @mem0/openclaw-mem0
 
-3. CONTEXT UPGRADE — Read ~/.openclaw/workspace/guides/context-upgrade/SKILL.md
+3. CONTEXT UPGRADE — Read ~/.openclaw/workspace/openclaw-skills/guides/context-upgrade/SKILL.md
    Implement all 5 upgrades. Add delegation rules and pipeline pattern to AGENTS.md.
 
-4. SEAMLESS MODEL SWITCHING — Read ~/.openclaw/workspace/guides/seamless-model-switching/article.md
+4. SEAMLESS MODEL SWITCHING — Read ~/.openclaw/workspace/openclaw-skills/guides/seamless-model-switching/article.md
    Apply Fix 1 (standardize context windows), Fix 3 (fallback chains), Fix 5 (compaction thresholds), and Fix 6 (context pruning).
 
 For all upgrades:
