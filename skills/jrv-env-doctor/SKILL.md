@@ -7,6 +7,8 @@ description: Validate .env files for common issues — detect leaked secrets (AW
 
 Validate and audit .env files for secrets, duplicates, syntax issues, and missing variables.
 
+> **See also:** [`env-file-toolkit`](../env-file-toolkit/) provides broader .env management (diff, merge, template generation). Use env-doctor for security-focused auditing.
+
 ## Quick Start
 
 ```bash

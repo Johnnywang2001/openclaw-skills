@@ -7,6 +7,8 @@ description: Validate and lint YAML files for syntax errors, duplicate keys, tab
 
 Validate YAML files for common issues including syntax errors, duplicate keys, tab characters, and structural problems.
 
+> **See also:** [`jrv-yaml-toolkit`](../jrv-yaml-toolkit/) is a full YAML toolkit (format, convert, query, merge). Use this skill for focused validation/linting only.
+
 ## Quick Start
 
 ```bash

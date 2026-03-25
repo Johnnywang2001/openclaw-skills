@@ -5,6 +5,8 @@ description: Complete guide to upgrading OpenClaw's memory system for persistent
 
 # OpenClaw Memory Upgrade
 
+> **See also:** [`memory-setup`](../memory-setup/) provides a quicker basic setup. This skill is the comprehensive upgrade path.
+
 Turn your OpenClaw agent from a goldfish into an elephant. This skill implements 6 memory upgrades that give your agent persistent, searchable memory across sessions — so it actually remembers who you are, what you're working on, and what happened yesterday.
 
 ## The Problem

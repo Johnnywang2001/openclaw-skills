@@ -26,6 +26,9 @@ from collections import defaultdict
 
 def read_csv(filepath, delimiter=",", encoding="utf-8"):
     """Read a CSV file and return headers + rows."""
+    if not os.path.isfile(filepath):
+        print(f"Error: File not found: {filepath}", file=sys.stderr)
+        sys.exit(1)
     with open(filepath, "r", encoding=encoding, newline="") as f:
         reader = csv.reader(f, delimiter=delimiter)
         headers = next(reader, None)

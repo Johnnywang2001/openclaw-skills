@@ -7,6 +7,8 @@ description: Scan project dependencies for known security vulnerabilities using 
 
 Scan project dependencies against the OSV.dev vulnerability database. Zero config, no API keys.
 
+> **See also:** [`dep-audit`](../dep-audit/) provides broader dependency health checks (outdated packages, license issues) in addition to vulnerabilities. Use this skill for focused CVE scanning against OSV.dev.
+
 ## Quick Start
 
 ```bash

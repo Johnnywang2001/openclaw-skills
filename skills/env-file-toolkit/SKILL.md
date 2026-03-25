@@ -7,6 +7,8 @@ description: Manage .env files with validate, diff, template generation, merge, 
 
 Swiss-army knife for `.env` file management. Validate syntax, diff environments, generate templates, merge files, and check for missing keys.
 
+> **See also:** [`jrv-env-doctor`](../jrv-env-doctor/) focuses on security auditing (.env secret detection, leaked API keys). Use this toolkit for general .env management, and env-doctor for security scans.
+
 ## Commands
 
 ### Validate

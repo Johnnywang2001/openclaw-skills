@@ -7,6 +7,8 @@ description: Full-featured YAML toolkit for validating, formatting, converting, 
 
 Everything you need to work with YAML files: validate syntax, format/prettify, convert to/from JSON, query with dot-path expressions, merge multiple files, and check against a schema.
 
+> **See also:** [`yaml-validator`](../yaml-validator/) is a lighter YAML linter with strict mode, directory scanning, and multi-document support. Use this toolkit when you need conversion, querying, or merging.
+
 ## Quick Start
 
 ```bash
