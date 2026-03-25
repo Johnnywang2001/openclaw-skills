@@ -6,18 +6,14 @@ Inject frontier-level reasoning patterns into any OpenClaw agent, regardless of 
 
 This skill teaches your agent to think more systematically by providing explicit reasoning scaffolding that top-tier models (like Claude Opus 4.6) do naturally. It covers:
 
-- **Think² metacognitive cycle** — Plan before acting, Monitor during execution, Evaluate before delivering (3x self-correction improvement in research)
-- **Goal coherence (anti-drift)** — maintain objective across multi-step chains, the #1 agentic failure mode in smaller models
-- **Robustness guards** — anti-hallucination, anti-anchoring, anti-pattern-matching, precision preservation (from Stanford's LLM Reasoning Failures survey)
-- **First-attempt completion** — front-load preparation to match Opus's first-try success rate
-- **Self-consistency checks** — solve hard problems two ways, compare results
-- **Tree of Thoughts** — generate multiple approaches, evaluate, pursue the best
-- **Adaptive effort allocation** — fast path for simple questions, deep reasoning for complex ones
-- **Tool use discipline** — ReAct pattern: Reason → Act → Observe → Reason again
+- **Reasoning patterns** — decompose problems, consider alternatives, state assumptions, verify work
+- **Decision frameworks** — evaluate tradeoffs, quantify, rank options, commit with reasoning
+- **Tool use discipline** — search before guessing, verify after acting, don't chain blindly
 - **Context management** — delegate heavy work, summarize don't paste, protect context window
 - **Communication discipline** — lead with answers, be direct, cite sources, admit uncertainty
-- **Error recovery** — read errors, diagnose before fixing, two failures = ask the user
-- **Research discipline** — search broadly, cross-reference, check dates, facts vs opinions
+- **Error handling** — read errors, diagnose before fixing, don't retry blindly
+- **Research discipline** — search broadly, cross-reference, check dates, distinguish facts from opinions
+- **Self-monitoring** — continuously check if you're answering the right question the right way
 
 ## Why It Matters
 
