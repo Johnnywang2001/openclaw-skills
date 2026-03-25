@@ -1,33 +1,31 @@
 # OpenClaw Skills Collection
 
-A curated collection of 72+ skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system.
+27 curated, high-quality skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 4 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
+
+Every skill here genuinely extends what an agent can do. No filler, no utilities an LLM already knows how to do natively.
 
 Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
 
 ---
 
-## 🚀 First: Upgrade Your Agent
+## 🚀 Start Here: Upgrade Your Agent
 
-Before installing any skills, apply these two foundational upgrades. These are not skills — they're setup guides that fundamentally improve how your agent thinks and remembers.
-
-You can implement both automatically with a single prompt (see below), or follow each guide manually.
+Before installing any skills, apply these foundational upgrades. They're not skills — they're setup guides that change how your agent operates at a fundamental level.
 
 ### 🧪 Reasoning Upgrade — Make Any Model Think Like Opus
 
 **[→ Reasoning Upgrade Skill](skills/reasoning-upgrade/SKILL.md)**
 
-Based on published research (Think² metacognitive framework, Chain-of-Thought, ReAct, Tree of Thoughts), this skill injects frontier-level reasoning patterns into any model. It won't change the model's weights — it changes how it approaches every problem.
+Based on published research (Think² metacognitive framework, Chain-of-Thought, ReAct, Tree of Thoughts, Stanford's LLM Reasoning Failures survey), this skill injects frontier-level reasoning patterns into any model. ~2,450 tokens per session.
 
 - **Think² three-phase cycle:** Plan before acting, Monitor during execution, Evaluate before delivering (3x self-correction improvement in research)
 - **Goal coherence (anti-drift):** Maintain objective across multi-step chains — the #1 failure mode in smaller models on agentic tasks
-- **Robustness guards:** Anti-hallucination, anti-anchoring, anti-pattern-matching, precision preservation — targets the specific failure modes identified in Stanford's LLM Reasoning Failures survey
-- **First-attempt completion:** Front-load preparation to match Opus's first-try success rate instead of retry loops
+- **Robustness guards:** Anti-hallucination, anti-anchoring, anti-pattern-matching, precision preservation
+- **First-attempt completion:** Front-load preparation to match Opus's first-try success rate
 - **Self-consistency checks:** Solve hard problems two ways, compare results
 - **Tree of Thoughts:** Generate multiple approaches, evaluate, pursue the best
 - **Adaptive effort allocation:** Fast path for simple questions, deep reasoning for complex ones
 - **Tool use discipline:** ReAct pattern — Reason → Act → Observe → Reason again
-
-~2,450 tokens per session. Install it and every session gets these patterns automatically — especially valuable when running cost-effective models (Codex, MiniMax, Sonnet) instead of Opus.
 
 ---
 
@@ -56,9 +54,15 @@ Restructures your agent into an orchestrator pattern — the main session stays 
 4. **Context pruning** — automatically drops old context with TTL
 5. **Pipeline pattern** — reusable PM → Workers → QA pattern for multi-step tasks
 
-### ⚡ One-Prompt Setup (Both Upgrades)
+### 🔄 Seamless Model Switching — Stop Crashes When Changing Models
 
-Paste this into your OpenClaw agent to implement everything automatically:
+**[→ Seamless Model Switching Guide](guides/seamless-model-switching/article.md)**
+
+If you use multiple LLM models, switching between them mid-session can cause crashes and context loss. This guide explains the four root causes and six config-level fixes.
+
+### ⚡ One-Prompt Setup (All Upgrades)
+
+Paste this into your OpenClaw agent to implement the Memory and Context upgrades automatically:
 
 ```
 Implement both the OpenClaw Memory Upgrade and Context Upgrade on this system. Read the guides at:
@@ -75,165 +79,86 @@ Restart the gateway.
 Report what you changed when done. Do not ask for permission at each step — execute the full upgrade.
 ```
 
-**These are manual setup guides.** You'll need to copy the JSON config blocks from each guide into your `openclaw.json` file, or use the one-prompt setup above to have your agent do it for you.
-
----
-
-### 🔄 Seamless Model Switching — Stop Crashes When Changing Models
-
-**[→ Seamless Model Switching Guide](guides/seamless-model-switching/article.md)**
-
-If you use multiple LLM models (Opus, Sonnet, Codex, etc.), switching between them mid-session can cause crashes, context loss, and broken sessions. This guide explains the four root causes and provides six config-level fixes:
-
-1. Standardize context windows across models
-2. Compact before switching
-3. Use fallback chains instead of manual switches
-4. Start new sessions for model changes
-5. Raise compaction thresholds
-6. Enable context pruning with TTL
-
-Based on real OpenClaw GitHub issues and community workarounds.
-
----
-
-### 🤖 How to Create an Effective AI Agent
-
-**[→ How to Create an Effective AI Agent](guides/how-to-create-an-effective-ai-agent/article.md)**
-
-A comprehensive, practical guide covering the seven critical decisions that separate the 5% of AI agents that make it to production from the 95% that don't. Covers problem selection, agent architecture (model + tools + instructions), platform choices, orchestration patterns, guardrails and testing, and the scaling playbook. Backed by data from Gartner, McKinsey, and real enterprise case studies.
-
 ---
 
 ## Installation
 
-### Option 1: Install from ClawHub (if published)
-```bash
-clawhub install <skill-name>
-```
+### From this GitHub repo
 
-### Option 2: Install directly from this GitHub repo
-
-Clone the entire collection:
+Clone the collection:
 ```bash
 git clone https://github.com/Johnnywang2001/openclaw-skills.git
 ```
 
-Then copy any skill folder into your OpenClaw workspace:
+Copy any skill into your workspace:
 ```bash
 cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
 ```
 
-Or symlink it (stays updated when you `git pull`):
+Or symlink (stays updated when you `git pull`):
 ```bash
 ln -s /path/to/openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/<skill-name>
 ```
 
-To install ALL skills at once:
+Install ALL skills at once:
 ```bash
-# Copy all
-cp -r openclaw-skills/skills/* ~/.openclaw/workspace/skills/
-
-# Or symlink all
 for skill in openclaw-skills/skills/*/; do
   name=$(basename "$skill")
   ln -s "$(pwd)/$skill" ~/.openclaw/workspace/skills/$name
 done
 ```
 
-After adding skills, restart your OpenClaw gateway:
+After adding skills, restart the gateway:
 ```bash
 openclaw gateway restart
 ```
 
 ---
 
-## What Are Skills?
-
-Skills are modular packages that extend your OpenClaw agent's capabilities. Each skill provides specialized knowledge, workflows, scripts, or tool integrations that turn a general-purpose AI agent into a domain expert.
-
-Each skill contains:
-- `SKILL.md` — the core instructions the agent reads
-- `scripts/` (optional) — executable scripts the agent can run
-- `references/` (optional) — documentation or data files
-- `README.md` — human-readable description and usage guide
-
----
-
 ## Skills Directory
-
-### 🔒 Security & Networking
-| Skill | Description |
-|-------|-------------|
-| [cors-tester](skills/cors-tester) | Test CORS configurations across endpoints |
-| [dep-vuln-scanner](skills/dep-vuln-scanner) | Scan dependencies for known vulnerabilities |
-| [file-hasher](skills/file-hasher) | Generate and verify file hashes (MD5, SHA256, etc.) |
-| [http-sec-audit](skills/http-sec-audit) | Audit HTTP security headers |
-| [ip-geo-toolkit](skills/ip-geo-toolkit) | IP geolocation lookups |
-| [jwt-toolkit](skills/jwt-toolkit) | Decode, verify, and debug JWT tokens |
-| [password-gen](skills/password-gen) | Generate secure passwords |
-| [port-scanner](skills/port-scanner) | Scan ports on target hosts |
-| [subdomain-enum](skills/subdomain-enum) | Enumerate subdomains for a domain |
-| [subnet-calc](skills/subnet-calc) | Calculate subnets, CIDR ranges, and IP math |
-| [whois-toolkit](skills/whois-toolkit) | WHOIS lookups for domains |
-| [wifi-scanner](skills/wifi-scanner) | Scan and analyze WiFi networks |
-
-### 🛠 Dev Tools
-| Skill | Description |
-|-------|-------------|
-| [code-metrics](skills/code-metrics) | Analyze code complexity and metrics |
-| [crontab-wizard](skills/crontab-wizard) | Generate and explain cron expressions |
-| [dep-audit](skills/dep-audit) | Audit project dependencies |
-| [dep-graph](skills/dep-graph) | Visualize dependency graphs |
-| [encoding-toolkit](skills/encoding-toolkit) | Base64, URL, HTML encoding/decoding |
-| [env-file-toolkit](skills/env-file-toolkit) | Validate and manage .env files |
-| [git-hooks-toolkit](skills/git-hooks-toolkit) | Create and manage Git hooks |
-| [git-stats](skills/git-stats) | Analyze Git repository statistics |
-| [gitignore-gen](skills/gitignore-gen) | Generate .gitignore files by language/framework |
-| [jrv-changelog-gen](skills/jrv-changelog-gen) | Generate changelogs from Git history |
-| [jrv-env-doctor](skills/jrv-env-doctor) | Validate .env files, catch leaked secrets |
-| [jrv-http-client](skills/jrv-http-client) | HTTP client for API testing |
-| [jrv-mock-data](skills/jrv-mock-data) | Generate mock/fake data for testing |
-| [jrv-text-diff](skills/jrv-text-diff) | Compare text files and show diffs |
-| [jrv-yaml-toolkit](skills/jrv-yaml-toolkit) | Validate and manipulate YAML files |
-| [json-diff](skills/json-diff) | Compare JSON files |
-| [json-schema-toolkit](skills/json-schema-toolkit) | Validate and generate JSON schemas |
-| [lorem-gen](skills/lorem-gen) | Generate lorem ipsum placeholder text |
-| [regex-toolkit](skills/regex-toolkit) | Build, test, and explain regular expressions |
-| [semver-toolkit](skills/semver-toolkit) | Parse and compare semantic versions |
-| [sql-formatter](skills/sql-formatter) | Format and beautify SQL queries |
-| [text-stats](skills/text-stats) | Word count, reading time, text analysis |
-| [timezone-toolkit](skills/timezone-toolkit) | Convert between timezones |
-| [uuid-toolkit](skills/uuid-toolkit) | Generate and validate UUIDs |
-
-### 📊 DevOps & Monitoring
-| Skill | Description |
-|-------|-------------|
-| [docker-audit](skills/docker-audit) | Audit Docker configurations |
-| [disk-usage-analyzer](skills/disk-usage-analyzer) | Analyze disk usage |
-| [jrv-log-analyzer](skills/jrv-log-analyzer) | Analyze log files with error fingerprinting |
-| [jrv-ssl-monitor](skills/jrv-ssl-monitor) | Monitor SSL certificate expiry |
-| [network-speed-test](skills/network-speed-test) | Test network speed |
-| [process-top](skills/process-top) | Monitor running processes |
-| [uptime-checker](skills/uptime-checker) | Check website uptime |
-
-### 🌐 SEO & Web
-| Skill | Description |
-|-------|-------------|
-| [dead-link-scanner](skills/dead-link-scanner) | Find broken links on websites |
-| [htaccess-gen](skills/htaccess-gen) | Generate Apache .htaccess files |
-| [robots-txt-gen](skills/robots-txt-gen) | Generate robots.txt files |
-| [seo-audit-report](skills/seo-audit-report) | Run SEO audits on websites |
-| [sitemap-generator](skills/sitemap-generator) | Generate XML sitemaps |
 
 ### 🤖 Agent Self-Improvement
 | Skill | Description |
 |-------|-------------|
-| [reasoning-upgrade](skills/reasoning-upgrade) | **Inject Opus-level reasoning into any model** — thinking patterns, decision frameworks, tool discipline, self-monitoring |
-| [self-improving-agent](skills/self-improving-agent) | Capture learnings and errors for continuous improvement |
+| [reasoning-upgrade](skills/reasoning-upgrade) | **Inject Opus-level reasoning into any model** — Think², goal coherence, robustness guards, first-attempt completion |
+| [self-improving-agent](skills/self-improving-agent) | Capture learnings, errors, and corrections for continuous improvement |
 | [find-skills](skills/find-skills) | Discover and install skills on the fly |
 | [auto-updater](skills/auto-updater) | Auto-update OpenClaw and skills daily |
 | [memory-setup](skills/memory-setup) | Configure memory search for persistent context |
 | [memory-tiering](skills/memory-tiering) | Multi-tiered memory management (HOT/WARM/COLD) |
+
+### 🔒 Security
+| Skill | Description |
+|-------|-------------|
+| [dep-vuln-scanner](skills/dep-vuln-scanner) | Scan dependencies for known CVEs via OSV.dev API |
+| [docker-audit](skills/docker-audit) | Audit Dockerfiles and docker-compose for security issues |
+| [http-sec-audit](skills/http-sec-audit) | Audit HTTP security headers on live URLs |
+| [jrv-env-doctor](skills/jrv-env-doctor) | Catch leaked secrets in .env files (AWS, GitHub, Stripe, etc.) |
+| [port-scanner](skills/port-scanner) | TCP port scanning for network recon and security auditing |
+
+### 📊 DevOps & Monitoring
+| Skill | Description |
+|-------|-------------|
+| [jrv-log-analyzer](skills/jrv-log-analyzer) | Analyze log files — error fingerprinting, severity breakdown, anomaly detection |
+| [jrv-ssl-monitor](skills/jrv-ssl-monitor) | Monitor SSL certificate expiry across multiple domains |
+| [network-speed-test](skills/network-speed-test) | Measure download/upload speed and latency |
+| [jrv-yaml-toolkit](skills/jrv-yaml-toolkit) | Validate, format, convert, merge, and query YAML files |
+
+### 🌐 SEO & Web
+| Skill | Description |
+|-------|-------------|
+| [dead-link-scanner](skills/dead-link-scanner) | Crawl websites and find broken links |
+| [seo-audit-report](skills/seo-audit-report) | Run comprehensive SEO audits with actionable reports |
+| [sitemap-generator](skills/sitemap-generator) | Generate XML sitemaps by crawling a website |
+
+### 💼 Business & Productivity
+| Skill | Description |
+|-------|-------------|
+| [api-cost-tracker](skills/api-cost-tracker) | Track and optimize LLM API spending across providers |
+| [app-store-optimization](skills/app-store-optimization) | App Store keyword research and metadata optimization |
+| [competitor-monitor](skills/competitor-monitor) | Monitor competitor websites, pricing, and product changes |
+| [invoice-generator](skills/invoice-generator) | Generate professional PDF invoices |
+| [price-tracker](skills/price-tracker) | Track product prices and alert on changes |
 
 ### 📝 Obsidian & Notes
 | Skill | Description |
@@ -243,27 +168,16 @@ Each skill contains:
 | [obsidian-daily-mai](skills/obsidian-daily-mai) | Obsidian daily note management |
 | [obsidian-openclaw-sync](skills/obsidian-openclaw-sync) | Sync OpenClaw config across iCloud devices |
 
-### 💼 Business & Productivity
-| Skill | Description |
-|-------|-------------|
-| [api-cost-tracker](skills/api-cost-tracker) | Track API usage costs |
-| [app-store-optimization](skills/app-store-optimization) | App Store keyword research and optimization |
-| [competitor-monitor](skills/competitor-monitor) | Monitor competitor activity |
-| [email-validator](skills/email-validator) | Validate email addresses |
-| [invoice-generator](skills/invoice-generator) | Generate invoices |
-| [price-tracker](skills/price-tracker) | Track product prices |
+---
 
-### 📚 Reference & Utilities
-| Skill | Description |
+## Guides
+
+| Guide | Description |
 |-------|-------------|
-| [color-toolkit](skills/color-toolkit) | Color conversion and palette tools |
-| [csv-toolkit](skills/csv-toolkit) | Parse and manipulate CSV files |
-| [exif-toolkit](skills/exif-toolkit) | Read and edit image EXIF data |
-| [http-status-ref](skills/http-status-ref) | HTTP status code reference |
-| [text-toolkit](skills/text-toolkit) | Text manipulation utilities |
-| [toml-toolkit](skills/toml-toolkit) | Parse and validate TOML files |
-| [yaml-validator](skills/yaml-validator) | Validate YAML syntax |
-| [net-speed-test](skills/net-speed-test) | Network speed testing |
+| [Memory Upgrade](guides/memory-upgrade) | 6-step guide to persistent, searchable agent memory |
+| [Context Upgrade](guides/context-upgrade) | Orchestrator pattern for efficient context window usage |
+| [Seamless Model Switching](guides/seamless-model-switching) | Fix crashes and context loss when changing models |
+| [How to Create an Effective AI Agent](guides/how-to-create-an-effective-ai-agent) | Practical guide for building AI agents |
 
 ---
 
@@ -273,4 +187,4 @@ MIT
 
 ## Contributing
 
-Pull requests welcome. Each skill should have a `SKILL.md` at its root following the [OpenClaw skill format](https://docs.openclaw.ai).
+Pull requests welcome. Quality bar: every skill must genuinely extend what an OpenClaw agent can do. If an LLM can already do it natively without a skill, it doesn't belong here.
