@@ -47,7 +47,7 @@ The orchestrator's context only contains your conversation and summaries — nev
 ## Prerequisites
 
 - OpenClaw 2026.3.0 or later
-- Recommended: Complete the [Memory Upgrade](../openclaw-memory-upgrade/SKILL.md) first
+- Recommended: Complete the [Memory Upgrade](../memory-upgrade/SKILL.md) first
 - A model that supports sub-agent spawning (Claude Opus/Sonnet, GPT-5.x, etc.)
 
 ---
@@ -215,7 +215,7 @@ To implement all Context Upgrade changes automatically, paste this single prompt
 
 ```
 Implement the OpenClaw Context Upgrade on this system. Read the guide at:
-skills/openclaw-context-upgrade/SKILL.md (or ~/.openclaw/workspace/skills/openclaw-context-upgrade/SKILL.md)
+guides/context-upgrade/SKILL.md (or ~/.openclaw/workspace/guides/context-upgrade/SKILL.md)
 
 Follow every step:
 1. Add the Orchestrator Delegation Rules to AGENTS.md
@@ -233,8 +233,8 @@ If you also need the Memory Upgrade, use this combined prompt:
 
 ```
 Implement both the OpenClaw Memory Upgrade and Context Upgrade on this system. Read the guides at:
-- skills/openclaw-memory-upgrade/SKILL.md
-- skills/openclaw-context-upgrade/SKILL.md
+- guides/memory-upgrade/SKILL.md
+- guides/context-upgrade/SKILL.md
 
 For the Memory Upgrade: implement all 5 upgrades (skip Cognee/upgrade 6).
 For the Context Upgrade: implement all 5 upgrades.

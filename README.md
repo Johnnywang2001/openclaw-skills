@@ -14,7 +14,7 @@ You can implement both automatically with a single prompt (see below), or follow
 
 ### 🧠 Memory Upgrade — Make Your Agent Remember
 
-**[→ OpenClaw Memory Upgrade Guide](skills/openclaw-memory-upgrade/SKILL.md)**
+**[→ OpenClaw Memory Upgrade Guide](guides/memory-upgrade/SKILL.md)**
 
 Transforms your agent from forgetting everything between sessions to having persistent, searchable memory across 6 upgrades:
 
@@ -27,7 +27,7 @@ Transforms your agent from forgetting everything between sessions to having pers
 
 ### 🧹 Context Upgrade — Make Your Agent Think Efficiently
 
-**[→ OpenClaw Context Upgrade Guide](skills/openclaw-context-upgrade/SKILL.md)**
+**[→ OpenClaw Context Upgrade Guide](guides/context-upgrade/SKILL.md)**
 
 Restructures your agent into an orchestrator pattern — the main session stays lean for conversation while sub-agents handle all the heavy lifting:
 
@@ -43,8 +43,8 @@ Paste this into your OpenClaw agent to implement everything automatically:
 
 ```
 Implement both the OpenClaw Memory Upgrade and Context Upgrade on this system. Read the guides at:
-- ~/.openclaw/workspace/skills/openclaw-memory-upgrade/SKILL.md
-- ~/.openclaw/workspace/skills/openclaw-context-upgrade/SKILL.md
+- ~/.openclaw/workspace/guides/memory-upgrade/SKILL.md
+- ~/.openclaw/workspace/guides/context-upgrade/SKILL.md
 
 For the Memory Upgrade: implement all 5 upgrades (skip Cognee/upgrade 6).
 For the Context Upgrade: implement all 5 upgrades.
