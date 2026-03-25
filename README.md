@@ -12,6 +12,22 @@ Before installing any skills, apply these two foundational upgrades. These are n
 
 You can implement both automatically with a single prompt (see below), or follow each guide manually.
 
+### 🧪 Reasoning Upgrade — Make Any Model Think Like Opus
+
+**[→ Reasoning Upgrade Skill](skills/reasoning-upgrade/SKILL.md)**
+
+Based on published research (Think² metacognitive framework, Chain-of-Thought, ReAct, Tree of Thoughts), this skill injects frontier-level reasoning patterns into any model. It won't change the model's weights — it changes how it approaches every problem.
+
+- **Think² three-phase cycle:** Plan before acting, Monitor during execution, Evaluate before delivering (3x self-correction improvement in research)
+- **Self-consistency checks:** Solve hard problems two ways, compare results
+- **Tree of Thoughts:** Generate multiple approaches, evaluate, pursue the best
+- **Adaptive effort allocation:** Fast path for simple questions, deep reasoning for complex ones
+- **Tool use discipline:** ReAct pattern — Reason → Act → Observe → Reason again
+
+Install it and every session gets these patterns automatically — especially valuable when running cost-effective models (Codex, MiniMax, Sonnet) instead of Opus.
+
+---
+
 ### 🧠 Memory Upgrade — Make Your Agent Remember
 
 **[→ OpenClaw Memory Upgrade Guide](guides/memory-upgrade/SKILL.md)**
