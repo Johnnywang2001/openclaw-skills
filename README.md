@@ -1,25 +1,84 @@
 # OpenClaw Skills Collection
 
-A curated collection of 72 skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system.
+A curated collection of 72+ skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system.
 
 Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
+
+---
+
+## 🧠 First: Upgrade Your Agent's Memory
+
+Before installing any skills, upgrade your OpenClaw agent's memory system. This is not a skill — it's a setup guide that transforms your agent from forgetting everything between sessions to having persistent, searchable memory.
+
+**[→ OpenClaw Memory Upgrade Guide](skills/openclaw-memory-upgrade/SKILL.md)**
+
+This guide walks you through 6 upgrades:
+
+1. **Enhanced memoryFlush** — automatically saves 8 categories of important info before context is lost
+2. **Session indexing** — makes past conversations searchable
+3. **Manual memory management** — two-tier file system (daily logs + curated long-term memory)
+4. **QMD hybrid search** — keyword + semantic search with diversity ranking and recency bias
+5. **Mem0 plugin** — auto-capture and auto-recall of memories
+6. **Cognee** (optional) — graph-based memory (requires Docker)
+
+**This is a manual setup.** You'll need to copy the JSON config blocks from the guide into your `openclaw.json` file and install the Mem0 plugin. The guide explains every step and every config field.
+
+---
+
+## Installation
+
+### Option 1: Install from ClawHub (if published)
+```bash
+clawhub install <skill-name>
+```
+
+### Option 2: Install directly from this GitHub repo
+
+Clone the entire collection:
+```bash
+git clone https://github.com/Johnnywang2001/openclaw-skills.git
+```
+
+Then copy any skill folder into your OpenClaw workspace:
+```bash
+cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
+```
+
+Or symlink it (stays updated when you `git pull`):
+```bash
+ln -s /path/to/openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/<skill-name>
+```
+
+To install ALL skills at once:
+```bash
+# Copy all
+cp -r openclaw-skills/skills/* ~/.openclaw/workspace/skills/
+
+# Or symlink all
+for skill in openclaw-skills/skills/*/; do
+  name=$(basename "$skill")
+  ln -s "$(pwd)/$skill" ~/.openclaw/workspace/skills/$name
+done
+```
+
+After adding skills, restart your OpenClaw gateway:
+```bash
+openclaw gateway restart
+```
+
+---
 
 ## What Are Skills?
 
 Skills are modular packages that extend your OpenClaw agent's capabilities. Each skill provides specialized knowledge, workflows, scripts, or tool integrations that turn a general-purpose AI agent into a domain expert.
 
-## Installation
+Each skill contains:
+- `SKILL.md` — the core instructions the agent reads
+- `scripts/` (optional) — executable scripts the agent can run
+- `references/` (optional) — documentation or data files
+- `README.md` — human-readable description and usage guide
 
-Install any individual skill:
-```bash
-clawhub install <skill-name>
-```
-
-Or clone this repo and copy the skill folder you want into your OpenClaw workspace:
-```bash
-git clone https://github.com/Johnnywang2001/openclaw-skills.git
-cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
-```
+---
 
 ## Skills Directory
 
@@ -87,15 +146,14 @@ cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
 | [seo-audit-report](skills/seo-audit-report) | Run SEO audits on websites |
 | [sitemap-generator](skills/sitemap-generator) | Generate XML sitemaps |
 
-### 🧠 Memory & AI Agent
+### 🤖 Agent Self-Improvement
 | Skill | Description |
 |-------|-------------|
-| [openclaw-memory-upgrade](skills/openclaw-memory-upgrade) | Complete guide to upgrading OpenClaw's memory system (6 upgrades) |
-| [memory-setup](skills/memory-setup) | Configure memory search for persistent context |
-| [memory-tiering](skills/memory-tiering) | Multi-tiered memory management (HOT/WARM/COLD) |
 | [self-improving-agent](skills/self-improving-agent) | Capture learnings and errors for continuous improvement |
 | [find-skills](skills/find-skills) | Discover and install skills on the fly |
 | [auto-updater](skills/auto-updater) | Auto-update OpenClaw and skills daily |
+| [memory-setup](skills/memory-setup) | Configure memory search for persistent context |
+| [memory-tiering](skills/memory-tiering) | Multi-tiered memory management (HOT/WARM/COLD) |
 
 ### 📝 Obsidian & Notes
 | Skill | Description |
@@ -115,7 +173,7 @@ cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
 | [invoice-generator](skills/invoice-generator) | Generate invoices |
 | [price-tracker](skills/price-tracker) | Track product prices |
 
-### 📚 Reference
+### 📚 Reference & Utilities
 | Skill | Description |
 |-------|-------------|
 | [color-toolkit](skills/color-toolkit) | Color conversion and palette tools |
@@ -126,6 +184,8 @@ cp -r openclaw-skills/skills/<skill-name> ~/.openclaw/workspace/skills/
 | [toml-toolkit](skills/toml-toolkit) | Parse and validate TOML files |
 | [yaml-validator](skills/yaml-validator) | Validate YAML syntax |
 | [net-speed-test](skills/net-speed-test) | Network speed testing |
+
+---
 
 ## License
 
