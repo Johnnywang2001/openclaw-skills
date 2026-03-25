@@ -26,9 +26,6 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".tiff", ".tif", ".webp", ".heic", 
 
 def get_exif_data(image_path):
     """Extract EXIF data as a readable dict."""
-    if not os.path.isfile(image_path):
-        print(f"Error: File not found: {image_path}", file=sys.stderr)
-        sys.exit(1)
     img = Image.open(image_path)
     exif_raw = img.getexif()
     if not exif_raw:
@@ -155,9 +152,6 @@ def cmd_read(args):
 
 def cmd_strip(args):
     """Strip EXIF data from an image."""
-    if not os.path.isfile(args.image):
-        print(f"Error: File not found: {args.image}", file=sys.stderr)
-        sys.exit(1)
     img = Image.open(args.image)
 
     # Create a new image without EXIF

@@ -7,8 +7,6 @@ description: Audit project dependencies for outdated packages, known vulnerabili
 
 Scan project dependency files for outdated packages, known vulnerabilities, and health issues.
 
-> **See also:** [`dep-vuln-scanner`](../dep-vuln-scanner/) focuses specifically on CVE/vulnerability scanning via the OSV.dev API. This skill provides broader health checks (outdated packages, license issues) in addition to vulnerability detection.
-
 ## Quick Start
 
 ```bash

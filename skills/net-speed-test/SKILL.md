@@ -5,8 +5,6 @@ description: Test network speed from the command line. Measures download speed, 
 
 # Network Speed Test
 
-> **Note:** Consider using [`network-speed-test`](../network-speed-test/) instead — it has more features including configurable test sizes and per-test flags. This skill may be removed in a future release.
-
 Measure download speed, upload speed, and latency using public endpoints. Zero dependencies beyond Python stdlib.
 
 ## Quick Start

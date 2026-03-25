@@ -7,8 +7,6 @@ description: Audit HTTP security headers for any website. Use when a user asks t
 
 Scan any URL for missing or misconfigured security headers and get an actionable report with grades, fix recommendations, and info-leak detection.
 
-> **See also:** [`http-status-ref`](../http-status-ref/) includes a basic header check alongside its status code reference. Use this skill for dedicated, in-depth security header auditing with grades.
-
 ## Quick Start
 
 ```bash

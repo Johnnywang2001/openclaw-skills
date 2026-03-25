@@ -1,19 +1,17 @@
 ---
 name: memory-setup
-description: Enable and configure OpenClaw memory search for persistent context. Use when setting up memory, fixing "goldfish brain," or helping users configure memorySearch in their config. Covers MEMORY.md, daily logs, and vector search setup.
+description: Enable and configure Moltbot/Clawdbot memory search for persistent context. Use when setting up memory, fixing "goldfish brain," or helping users configure memorySearch in their config. Covers MEMORY.md, daily logs, and vector search setup.
 ---
 
 # Memory Setup Skill
 
-Transform your agent from goldfish to elephant. This skill helps configure persistent memory for OpenClaw.
-
-> **See also:** [`openclaw-memory-upgrade`](../openclaw-memory-upgrade/) is a comprehensive 6-step upgrade guide covering memoryFlush, session indexing, QMD hybrid search, and Mem0. Use this skill for basic setup; use openclaw-memory-upgrade for the full upgrade path.
+Transform your agent from goldfish to elephant. This skill helps configure persistent memory for Moltbot/Clawdbot.
 
 ## Quick Setup
 
 ### 1. Enable Memory Search in Config
 
-Add to `~/.openclaw/openclaw.json`:
+Add to `~/.clawdbot/clawdbot.json` (or `moltbot.json`):
 
 ```json
 {
@@ -118,7 +116,7 @@ Before answering questions about prior work, decisions, dates, people, preferenc
 ### Memory search not working?
 1. Check `memorySearch.enabled: true` in config
 2. Verify MEMORY.md exists in workspace root
-3. Restart gateway: `openclaw gateway restart`
+3. Restart gateway: `clawdbot gateway restart`
 
 ### Results not relevant?
 - Lower `minScore` to `0.2` for more results
