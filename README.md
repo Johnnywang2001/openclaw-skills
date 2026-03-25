@@ -77,6 +77,14 @@ Based on real OpenClaw GitHub issues and community workarounds.
 
 ---
 
+### 🤖 How to Create an Effective AI Agent
+
+**[→ How to Create an Effective AI Agent](guides/how-to-create-an-effective-ai-agent/article.md)**
+
+A comprehensive, practical guide covering the seven critical decisions that separate the 5% of AI agents that make it to production from the 95% that don't. Covers problem selection, agent architecture (model + tools + instructions), platform choices, orchestration patterns, guardrails and testing, and the scaling playbook. Backed by data from Gartner, McKinsey, and real enterprise case studies.
+
+---
+
 ## Installation
 
 ### Option 1: Install from ClawHub (if published)
