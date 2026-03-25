@@ -60,6 +60,23 @@ Report what you changed when done. Do not ask for permission at each step — ex
 
 ---
 
+### 🔄 Seamless Model Switching — Stop Crashes When Changing Models
+
+**[→ Seamless Model Switching Guide](guides/seamless-model-switching/article.md)**
+
+If you use multiple LLM models (Opus, Sonnet, Codex, etc.), switching between them mid-session can cause crashes, context loss, and broken sessions. This guide explains the four root causes and provides six config-level fixes:
+
+1. Standardize context windows across models
+2. Compact before switching
+3. Use fallback chains instead of manual switches
+4. Start new sessions for model changes
+5. Raise compaction thresholds
+6. Enable context pruning with TTL
+
+Based on real OpenClaw GitHub issues and community workarounds.
+
+---
+
 ## Installation
 
 ### Option 1: Install from ClawHub (if published)
