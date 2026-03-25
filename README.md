@@ -209,6 +209,7 @@ Each skill contains:
 ### 🤖 Agent Self-Improvement
 | Skill | Description |
 |-------|-------------|
+| [reasoning-upgrade](skills/reasoning-upgrade) | **Inject Opus-level reasoning into any model** — thinking patterns, decision frameworks, tool discipline, self-monitoring |
 | [self-improving-agent](skills/self-improving-agent) | Capture learnings and errors for continuous improvement |
 | [find-skills](skills/find-skills) | Discover and install skills on the fly |
 | [auto-updater](skills/auto-updater) | Auto-update OpenClaw and skills daily |
