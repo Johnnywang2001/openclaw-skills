@@ -225,9 +225,9 @@ openclaw plugin install @mem0/openclaw-mem0
 - `topK: 10` — returns up to 10 relevant memories per search
 - `searchThreshold: 0.5` — only returns memories above 50% relevance score
 
-**Note:** Requires the Ollama npm module. If you see errors about missing `ollama` module, run:
+**Note:** If you encounter module errors after installation, run:
 ```bash
-cd ~/.openclaw/extensions/openclaw-mem0 && npm install ollama
+cd ~/.openclaw/extensions/openclaw-mem0 && npm install
 ```
 
 ---
