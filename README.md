@@ -193,6 +193,7 @@ openclaw gateway restart
 | [Context Upgrade](guides/context-upgrade) | Orchestrator pattern for efficient context window usage |
 | [Seamless Model Switching](guides/seamless-model-switching) | Fix crashes and context loss when changing models |
 | [How to Create an Effective AI Agent](guides/how-to-create-an-effective-ai-agent) | Practical guide for building AI agents |
+| [AI Agents for Data Analysis](guides/ai-agents-for-data-analysis) | How to create AI agents that transform your data analysis workflow |
 
 ---
 
