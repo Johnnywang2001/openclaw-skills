@@ -194,6 +194,7 @@ openclaw gateway restart
 | [Seamless Model Switching](guides/seamless-model-switching) | Fix crashes and context loss when changing models |
 | [How to Create an Effective AI Agent](guides/how-to-create-an-effective-ai-agent) | Practical guide for building AI agents |
 | [AI Agents for Data Analysis](guides/ai-agents-for-data-analysis) | How to create AI agents that transform your data analysis workflow |
+| [Streamline Workflows with AI Agents](guides/streamline-workflows-with-ai-agents) | Practical playbook for identifying, mapping, and automating your highest-value workflows |
 
 ---
 
