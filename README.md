@@ -1,6 +1,6 @@
 # OpenClaw Skills Collection
 
-27 curated, high-quality skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 4 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
+32 curated, high-quality skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
 
 Every skill here genuinely extends what an agent can do. No filler, no utilities an LLM already knows how to do natively.
 
@@ -154,6 +154,7 @@ openclaw gateway restart
 ### 📊 DevOps & Monitoring
 | Skill | Description |
 |-------|-------------|
+| [github-repo-manager](skills/github-repo-manager) | **Production GitHub repo management** — branching, PRs, conventional commits, versioning, releases, branch protection, CI/CD hygiene |
 | [jrv-log-analyzer](skills/jrv-log-analyzer) | Analyze log files — error fingerprinting, severity breakdown, anomaly detection |
 | [jrv-ssl-monitor](skills/jrv-ssl-monitor) | Monitor SSL certificate expiry across multiple domains |
 | [network-speed-test](skills/network-speed-test) | Measure download/upload speed and latency |
@@ -174,6 +175,22 @@ openclaw gateway restart
 | [competitor-monitor](skills/competitor-monitor) | Monitor competitor websites, pricing, and product changes |
 | [invoice-generator](skills/invoice-generator) | Generate professional PDF invoices |
 | [price-tracker](skills/price-tracker) | Track product prices and alert on changes |
+
+### 📱 iOS Development
+| Skill | Description |
+|-------|-------------|
+| [ios-app-publisher](skills/ios-app-publisher) | **Complete iOS app publishing lifecycle** — Xcode setup, code signing, App Store Connect, TestFlight, submission, post-launch |
+| [ios-ui-design](skills/ios-ui-design) | **iOS UI/UX design with SwiftUI/UIKit** — HIG compliance, design systems, accessibility, App Store visual optimization |
+
+### 🔬 Research
+| Skill | Description |
+|-------|-------------|
+| [perplexity-research](skills/perplexity-research) | **Zero-cost deep research via Perplexity Pro** — browser automation, multi-source research, optional free-model verification |
+
+### 🧬 Agent Evolution
+| Skill | Description |
+|-------|-------------|
+| [skill-evolution](skills/skill-evolution) | **AutoSkill-powered self-evolving skills** — automatic extraction from conversations, versioned merging, vector retrieval |
 
 ### 📝 Obsidian & Notes
 | Skill | Description |
