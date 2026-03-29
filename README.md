@@ -58,6 +58,27 @@ Restructures your agent into an orchestrator pattern — the main session stays 
 
 If you use multiple LLM models, switching between them mid-session can cause crashes and context loss. This guide explains the four root causes and six config-level fixes.
 
+### 🧬 Skill Evolution — An Agent That Writes Its Own Skills
+
+**[→ Skill Evolution](skills/skill-evolution/SKILL.md)**
+
+Based on the [AutoSkill framework](https://arxiv.org/abs/2603.01145) (Yang et al., 2026), this skill turns your agent into a self-improving system. After each session, the agent analyzes the conversation, extracts durable patterns, and writes them as versioned skills that get injected into future sessions automatically.
+
+```
+Conversation → Skill Extraction → SkillBank (versioned + indexed) → Auto-retrieval in future sessions
+```
+
+- **Automatic extraction:** Identifies stable preferences, corrections, recurring workflows, and domain conventions from real conversations
+- **Smart filtering:** Skips one-off requests, generic knowledge, and temporary instructions — only durable patterns become skills
+- **Version management:** New patterns create skills; similar patterns merge into existing ones with version bumps
+- **Vector retrieval:** Future queries automatically pull the most relevant skills into context via embedding search
+- **Self-pruning:** Skills that get retrieved but never used are automatically pruned
+- **Human-editable:** Every skill is a plain SKILL.md file you can review and revise
+
+The result: your agent gets better at your specific workflows the more you use it — without you manually writing any instructions.
+
+---
+
 ### ⚡ One-Prompt Setup (All 4 Upgrades)
 
 First, clone the repo into your workspace:
