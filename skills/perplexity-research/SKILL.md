@@ -27,14 +27,19 @@ Deep research pipeline using Perplexity Pro via browser automation. All research
 
 ## Step 1: Search Perplexity
 
-Always use the OpenClaw managed browser (not profile="user"):
+Always use the OpenClaw managed browser (not profile="user").
+
+**Minimize the browser window first** so it doesn't take up screen real estate while researching:
 
 ```
+browser act → kind: evaluate, fn: "window.moveTo(0, 0); window.resizeTo(400, 300);"
 browser navigate → https://www.perplexity.ai/
 browser act → click textbox, type query, press Enter
 browser act → wait 10000ms (let response fully render)
 browser snapshot → read the response
 ```
+
+If the browser supports minimize via the OS, prefer that. The resize fallback keeps it small and out of the way.
 
 **Model selection:** Leave on **Sonar** (default). It's optimized for search. Only switch models if the user explicitly asks.
 

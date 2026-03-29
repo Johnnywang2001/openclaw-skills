@@ -264,6 +264,131 @@ def format_text(reports: list[dict], outdated_only: bool = False) -> str:
     return "\n".join(output)
 
 
+
+# --- OSV.dev vulnerability scanning ---
+
+def query_osv(package_name: str, version: str, ecosystem: str) -> list[dict]:
+    """Query OSV.dev API for known vulnerabilities."""
+    url = "https://api.osv.dev/v1/query"
+    payload = {
+        "package": {"name": package_name, "ecosystem": ecosystem},
+    }
+    if version and version != "unpinned":
+        payload["version"] = version
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(url, data=data, headers={
+        "Content-Type": "application/json",
+        "User-Agent": "dep-audit/1.0",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            return result.get("vulns", [])
+    except Exception:
+        return []
+
+
+def extract_severity(vuln: dict) -> str:
+    """Extract severity level from an OSV vulnerability entry."""
+    severity = "UNKNOWN"
+    if "database_specific" in vuln and "severity" in vuln["database_specific"]:
+        severity = vuln["database_specific"]["severity"]
+    elif "severity" in vuln:
+        for s in vuln["severity"]:
+            if s.get("type") == "CVSS_V3":
+                try:
+                    score_val = float(s.get("score", "0"))
+                    if score_val >= 9.0:
+                        severity = "CRITICAL"
+                    elif score_val >= 7.0:
+                        severity = "HIGH"
+                    elif score_val >= 4.0:
+                        severity = "MEDIUM"
+                    else:
+                        severity = "LOW"
+                except (ValueError, TypeError):
+                    pass
+    return severity
+
+
+# Map our ecosystem names to OSV ecosystem names
+OSV_ECOSYSTEM_MAP = {
+    "npm": "npm",
+    "pypi": "PyPI",
+    "rubygems": "RubyGems",
+}
+
+
+def run_osv_scan(reports: list[dict], output_json: bool = False) -> int:
+    """Run OSV.dev vulnerability scan on all audited dependencies."""
+    all_findings = []
+
+    for report in reports:
+        ecosystem = report["ecosystem"]
+        osv_ecosystem = OSV_ECOSYSTEM_MAP.get(ecosystem, ecosystem)
+        deps = report.get("dependencies", [])
+
+        if not output_json:
+            print(f"\n{'='*65}")
+            print(f"🔍 OSV.dev Vulnerability Scan: {report['file']} ({ecosystem})")
+            print(f"Scanning {len(deps)} dependencies...")
+            print(f"{'='*65}")
+
+        for dep in deps:
+            name = dep.get("name", "")
+            version = dep.get("current", "")
+            if not name or name == "ERROR":
+                continue
+
+            vulns = query_osv(name, version, osv_ecosystem)
+            if vulns:
+                for v in vulns:
+                    vuln_id = v.get("id", "N/A")
+                    summary = v.get("summary", "No description")
+                    severity = extract_severity(v)
+                    aliases = v.get("aliases", [])
+
+                    finding = {
+                        "package": name,
+                        "version": version or "unspecified",
+                        "ecosystem": ecosystem,
+                        "vuln_id": vuln_id,
+                        "severity": severity,
+                        "summary": summary,
+                        "aliases": aliases,
+                    }
+                    all_findings.append(finding)
+
+                    if not output_json:
+                        color = {"CRITICAL": "\033[91m", "HIGH": "\033[91m",
+                                 "MEDIUM": "\033[93m", "MODERATE": "\033[93m",
+                                 "LOW": "\033[92m"}.get(severity.upper(), "\033[0m")
+                        reset = "\033[0m"
+                        print(f"  {color}[{severity}]{reset} {name}@{version or '?'}")
+                        print(f"    ID: {vuln_id}")
+                        if aliases:
+                            print(f"    Aliases: {', '.join(aliases[:3])}")
+                        print(f"    {summary[:120]}")
+                        print()
+
+        if not output_json:
+            pkg_vulns = [f for f in all_findings if f["ecosystem"] == ecosystem]
+            if not pkg_vulns:
+                print(f"  \033[92mNo vulnerabilities found!\033[0m")
+
+    if output_json:
+        print(json.dumps(all_findings, indent=2))
+    else:
+        total = len(all_findings)
+        critical = sum(1 for f in all_findings if f["severity"] in ("CRITICAL", "HIGH"))
+        print(f"\n{'='*65}")
+        print(f"OSV SUMMARY: {total} vulnerabilities ({critical} critical/high)")
+        print(f"{'='*65}")
+
+    return len(all_findings)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Audit project dependencies for outdated packages",
@@ -273,11 +398,14 @@ def main():
   %(prog)s package.json
   %(prog)s requirements.txt --format json
   %(prog)s . --outdated-only
+  %(prog)s . --osv                     Scan for known CVEs via OSV.dev
+  %(prog)s . --osv --format json       Vulnerability scan with JSON output
 """,
     )
     parser.add_argument("target", help="Dependency file or directory to scan")
     parser.add_argument("--format", choices=["text", "json"], default="text", help="Output format (default: text)")
     parser.add_argument("--outdated-only", action="store_true", help="Only show outdated packages")
+    parser.add_argument("--osv", action="store_true", help="Scan for known vulnerabilities via OSV.dev API")
     args = parser.parse_args()
 
     target = Path(args.target)
@@ -309,10 +437,18 @@ def main():
                 sys.exit(1)
         reports.append(audit_file(str(target), fname))
 
-    if args.format == "json":
-        print(json.dumps(reports, indent=2))
+    if args.osv:
+        # Run OSV.dev vulnerability scan instead of (or in addition to) version audit
+        vuln_count = run_osv_scan(reports, output_json=(args.format == "json"))
+        if not (args.format == "json"):
+            # Also show the version audit
+            print(format_text(reports, args.outdated_only))
+        sys.exit(1 if vuln_count > 0 else 0)
     else:
-        print(format_text(reports, args.outdated_only))
+        if args.format == "json":
+            print(json.dumps(reports, indent=2))
+        else:
+            print(format_text(reports, args.outdated_only))
 
 
 if __name__ == "__main__":

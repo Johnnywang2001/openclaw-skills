@@ -22,6 +22,7 @@ python3 scripts/speed_test.py --latency
 ```
 
 ```bash
+python3 scripts/speed_test.py --all --quick           # 5 MB down, 1 MB up, 3 pings
 python3 scripts/speed_test.py --download --size 25   # 25 MB download test
 python3 scripts/speed_test.py --all --size 50         # 50 MB download, 25 MB upload
 ```

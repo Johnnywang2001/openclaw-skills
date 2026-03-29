@@ -129,7 +129,7 @@ def format_bytes(b):
     return f"{b} B"
 
 
-def run_latency_test(as_json=False):
+def run_latency_test(as_json=False, count=5):
     """Run latency tests against multiple hosts."""
     results = []
     if not as_json:
@@ -137,7 +137,7 @@ def run_latency_test(as_json=False):
         print("─" * 50)
 
     for name, host, port in LATENCY_HOSTS:
-        latencies = measure_latency(host, port)
+        latencies = measure_latency(host, port, count=count)
         if latencies:
             avg = statistics.mean(latencies)
             mn = min(latencies)
@@ -235,6 +235,7 @@ def main():
     parser.add_argument("--all", action="store_true", help="Run all tests")
     parser.add_argument("--json", action="store_true", help="Output results as JSON")
     parser.add_argument("--size", type=float, default=10, help="Test file size in MB (default: 10)")
+    parser.add_argument("--quick", action="store_true", help="Quick test: 5 MB download, 1 MB upload, 3 pings per host")
 
     args = parser.parse_args()
 
@@ -242,24 +243,32 @@ def main():
     if not (args.download or args.upload or args.latency or args.all):
         args.all = True
 
+    # --quick overrides defaults: smaller download, smaller upload, fewer pings
+    if args.quick:
+        if args.size == 10:  # user didn't explicitly set --size
+            args.size = 5
+
     do_download = args.all or args.download
     do_upload = args.all or args.upload
     do_latency = args.all or args.latency
 
     if not args.json:
-        print("🚀 Network Speed Test")
+        mode = " (quick)" if args.quick else ""
+        print(f"🚀 Network Speed Test{mode}")
         print("=" * 50)
 
     results = {"timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
 
     if do_latency:
-        results["latency"] = run_latency_test(args.json)
+        ping_count = 3 if args.quick else 5
+        results["latency"] = run_latency_test(args.json, count=ping_count)
 
     if do_download:
         results["download"] = run_download_test(args.size, args.json)
 
     if do_upload:
-        results["upload"] = run_upload_test(max(args.size / 2, 1), args.json)
+        upload_size = 1 if args.quick else max(args.size / 2, 1)
+        results["upload"] = run_upload_test(upload_size, args.json)
 
     if args.json:
         print(json.dumps(results, indent=2))

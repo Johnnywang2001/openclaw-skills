@@ -1,6 +1,6 @@
 # OpenClaw Skills Collection
 
-78 skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
+74 skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
 
 Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
 
@@ -159,14 +159,12 @@ openclaw gateway restart
 | [skill-evolution](skills/skill-evolution) | AutoSkill-powered self-evolving skills — automatic extraction from conversations, versioned merging, vector retrieval |
 | [find-skills](skills/find-skills) | Discover and install skills on the fly |
 | [auto-updater](skills/auto-updater) | Auto-update OpenClaw and skills daily |
-| [memory-setup](skills/memory-setup) | Configure memory search for persistent context |
 | [memory-tiering](skills/memory-tiering) | Multi-tiered memory management (HOT/WARM/COLD) |
 | [openclaw-memory-upgrade](skills/openclaw-memory-upgrade) | Complete 6-step guide to persistent, searchable agent memory |
 
 ### 🔒 Security
 | Skill | Description |
 |-------|-------------|
-| [dep-vuln-scanner](skills/dep-vuln-scanner) | Scan dependencies for known CVEs via OSV.dev API |
 | [docker-audit](skills/docker-audit) | Audit Dockerfiles and docker-compose for security issues |
 | [http-sec-audit](skills/http-sec-audit) | Audit HTTP security headers on live URLs |
 | [jrv-env-doctor](skills/jrv-env-doctor) | Catch leaked secrets in .env files (AWS, GitHub, Stripe, etc.) |
@@ -183,7 +181,6 @@ openclaw gateway restart
 | [jrv-ssl-monitor](skills/jrv-ssl-monitor) | Monitor SSL certificate expiry across multiple domains |
 | [uptime-checker](skills/uptime-checker) | Check URL uptime, response times, and SSL status |
 | [network-speed-test](skills/network-speed-test) | Measure download/upload speed and latency |
-| [net-speed-test](skills/net-speed-test) | Lightweight network speed test via Cloudflare endpoints |
 | [process-top](skills/process-top) | Monitor running processes, CPU, and memory usage |
 | [disk-usage-analyzer](skills/disk-usage-analyzer) | Analyze disk usage, find large files, detect duplicates |
 | [wifi-scanner](skills/wifi-scanner) | Scan and analyze nearby WiFi networks and signal strength |
@@ -252,7 +249,6 @@ openclaw gateway restart
 | [json-diff](skills/json-diff) | Compare two JSON files and show differences |
 | [json-schema-toolkit](skills/json-schema-toolkit) | Validate JSON against schemas, generate schemas from samples, convert to TypeScript/Python |
 | [jrv-yaml-toolkit](skills/jrv-yaml-toolkit) | Validate, format, convert, merge, and query YAML files |
-| [yaml-validator](skills/yaml-validator) | Validate and lint YAML files for syntax errors and structural issues |
 | [toml-toolkit](skills/toml-toolkit) | Validate, query, convert, and merge TOML files |
 | [csv-toolkit](skills/csv-toolkit) | View, filter, sort, convert, and analyze CSV files |
 | [env-file-toolkit](skills/env-file-toolkit) | Manage .env files — validate, diff, template, merge, and check for missing keys |

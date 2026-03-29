@@ -31,7 +31,19 @@ python3 scripts/yaml_toolkit.py set config.yaml "server.port" 8080
 # Merge multiple YAML files (later files override earlier)
 python3 scripts/yaml_toolkit.py merge base.yaml override.yaml
 
-# Lint against a simple schema file
+# Lint a file for duplicate keys, tabs, syntax errors
+python3 scripts/yaml_toolkit.py lint config.yaml
+
+# Lint an entire directory recursively
+python3 scripts/yaml_toolkit.py lint ./configs/
+
+# Lint with strict checks (trailing whitespace, long lines)
+python3 scripts/yaml_toolkit.py lint config.yaml --strict
+
+# Lint with JSON output
+python3 scripts/yaml_toolkit.py lint config.yaml --json
+
+# Lint against a schema file
 python3 scripts/yaml_toolkit.py lint config.yaml --schema schema.yaml
 
 # List all keys (flattened dot-path)
@@ -52,6 +64,8 @@ python3 scripts/yaml_toolkit.py minify config.yaml
 | `get <file> <path>` | Get value at dot-path (e.g. `server.host`) |
 | `set <file> <path> <val>` | Set value at dot-path, output updated YAML |
 | `merge <file1> <file2> ...` | Deep-merge YAML files (right overrides left) |
+| `lint <file>` | Lint YAML for duplicate keys, tabs, syntax errors |
+| `lint <dir>` | Recursively lint all .yaml/.yml files in a directory |
 | `lint <file> --schema <s>` | Validate keys against a schema YAML |
 | `keys <file>` | List all keys as flattened dot-paths |
 | `minify <file>` | Output compact single-line YAML |
@@ -63,6 +77,9 @@ python3 scripts/yaml_toolkit.py minify config.yaml
 | `--output <file>` | Write output to file instead of stdout |
 | `--indent N` | Indentation spaces (default: 2) |
 | `--allow-unicode` | Allow unicode in output (default: true) |
+| `--strict` | Lint: also check trailing whitespace, long lines (>256 chars) |
+| `--quiet` | Lint: only show errors, suppress info/warnings |
+| `--json` | Lint: output results as JSON |
 
 ## Use Cases
 

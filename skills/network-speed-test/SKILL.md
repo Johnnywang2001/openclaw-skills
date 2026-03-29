@@ -26,6 +26,15 @@ python3 scripts/speed_test.py --upload
 python3 scripts/speed_test.py --latency
 ```
 
+### Quick Test
+
+```bash
+python3 scripts/speed_test.py --all --quick           # 5 MB download, 1 MB upload, 3 pings
+python3 scripts/speed_test.py --quick --json           # Quick test with JSON output
+```
+
+Uses smaller payloads and fewer pings for a faster result. Great for quick connectivity checks.
+
 ### Custom Test Size
 
 ```bash

@@ -25,6 +25,23 @@ python3 scripts/dep_audit.py . --format json
 python3 scripts/dep_audit.py . --outdated-only
 ```
 
+### Vulnerability Scanning (OSV.dev)
+
+Scan dependencies for known CVEs and security advisories using the [OSV.dev](https://osv.dev/) API (free, no API key required):
+
+```bash
+# Scan for vulnerabilities
+python3 scripts/dep_audit.py . --osv
+
+# Vulnerability scan with JSON output
+python3 scripts/dep_audit.py . --osv --format json
+
+# Scan a specific file
+python3 scripts/dep_audit.py requirements.txt --osv
+```
+
+The `--osv` flag queries every detected dependency against OSV.dev, reporting CVE IDs, severity levels (CRITICAL/HIGH/MEDIUM/LOW), aliases, and summaries. Exit code 1 if vulnerabilities are found.
+
 ## Supported Ecosystems
 
 | File | Ecosystem | Checks |
