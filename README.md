@@ -1,8 +1,6 @@
 # OpenClaw Skills Collection
 
-32 curated, high-quality skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
-
-Every skill here genuinely extends what an agent can do. No filler, no utilities an LLM already knows how to do natively.
+78 skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
 
 Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
 
@@ -135,12 +133,14 @@ openclaw gateway restart
 ### 🤖 Agent Self-Improvement
 | Skill | Description |
 |-------|-------------|
-| [reasoning-upgrade](skills/reasoning-upgrade) | **Inject Opus-level reasoning into any model** — Think², goal coherence, robustness guards, first-attempt completion |
+| [reasoning-upgrade](skills/reasoning-upgrade) | Inject Opus-level reasoning into any model — Think², goal coherence, robustness guards, first-attempt completion |
 | [self-improving-agent](skills/self-improving-agent) | Capture learnings, errors, and corrections for continuous improvement |
+| [skill-evolution](skills/skill-evolution) | AutoSkill-powered self-evolving skills — automatic extraction from conversations, versioned merging, vector retrieval |
 | [find-skills](skills/find-skills) | Discover and install skills on the fly |
 | [auto-updater](skills/auto-updater) | Auto-update OpenClaw and skills daily |
 | [memory-setup](skills/memory-setup) | Configure memory search for persistent context |
 | [memory-tiering](skills/memory-tiering) | Multi-tiered memory management (HOT/WARM/COLD) |
+| [openclaw-memory-upgrade](skills/openclaw-memory-upgrade) | Complete 6-step guide to persistent, searchable agent memory |
 
 ### 🔒 Security
 | Skill | Description |
@@ -150,47 +150,63 @@ openclaw gateway restart
 | [http-sec-audit](skills/http-sec-audit) | Audit HTTP security headers on live URLs |
 | [jrv-env-doctor](skills/jrv-env-doctor) | Catch leaked secrets in .env files (AWS, GitHub, Stripe, etc.) |
 | [port-scanner](skills/port-scanner) | TCP port scanning for network recon and security auditing |
+| [subdomain-enum](skills/subdomain-enum) | Enumerate subdomains via DNS brute-force and certificate transparency logs |
+| [password-gen](skills/password-gen) | Generate secure passwords, passphrases, and PINs with entropy analysis |
+| [jwt-toolkit](skills/jwt-toolkit) | Decode, inspect, and validate JWT tokens |
+| [email-validator](skills/email-validator) | Validate email addresses with MX checks and disposable email detection |
 
 ### 📊 DevOps & Monitoring
 | Skill | Description |
 |-------|-------------|
-| [github-repo-manager](skills/github-repo-manager) | **Production GitHub repo management** — branching, PRs, conventional commits, versioning, releases, branch protection, CI/CD hygiene |
 | [jrv-log-analyzer](skills/jrv-log-analyzer) | Analyze log files — error fingerprinting, severity breakdown, anomaly detection |
 | [jrv-ssl-monitor](skills/jrv-ssl-monitor) | Monitor SSL certificate expiry across multiple domains |
+| [uptime-checker](skills/uptime-checker) | Check URL uptime, response times, and SSL status |
 | [network-speed-test](skills/network-speed-test) | Measure download/upload speed and latency |
-| [jrv-yaml-toolkit](skills/jrv-yaml-toolkit) | Validate, format, convert, merge, and query YAML files |
+| [net-speed-test](skills/net-speed-test) | Lightweight network speed test via Cloudflare endpoints |
+| [process-top](skills/process-top) | Monitor running processes, CPU, and memory usage |
+| [disk-usage-analyzer](skills/disk-usage-analyzer) | Analyze disk usage, find large files, detect duplicates |
+| [wifi-scanner](skills/wifi-scanner) | Scan and analyze nearby WiFi networks and signal strength |
+
+### 🔧 Git & GitHub
+| Skill | Description |
+|-------|-------------|
+| [github-repo-manager](skills/github-repo-manager) | Production GitHub repo management — branching, PRs, versioning, releases, branch protection, CI/CD hygiene |
+| [git-stats](skills/git-stats) | Analyze git repo statistics — contributors, commit frequency, lines of code |
+| [git-hooks-toolkit](skills/git-hooks-toolkit) | Generate and manage Git hooks with pre-built templates |
+| [gitignore-gen](skills/gitignore-gen) | Generate .gitignore files from 200+ GitHub templates |
+| [jrv-changelog-gen](skills/jrv-changelog-gen) | Generate changelogs from git history with conventional commit parsing |
+| [semver-toolkit](skills/semver-toolkit) | Parse, validate, compare, bump, and sort semantic versions |
+
+### 📱 iOS Development
+| Skill | Description |
+|-------|-------------|
+| [ios-app-publisher](skills/ios-app-publisher) | Complete iOS app publishing lifecycle — Xcode setup, code signing, App Store Connect, TestFlight, submission, post-launch |
+| [ios-ui-design](skills/ios-ui-design) | iOS UI/UX design with SwiftUI/UIKit — HIG compliance, design systems, accessibility, App Store visual optimization |
+| [app-store-optimization](skills/app-store-optimization) | App Store keyword research and metadata optimization |
 
 ### 🌐 SEO & Web
 | Skill | Description |
 |-------|-------------|
-| [dead-link-scanner](skills/dead-link-scanner) | Crawl websites and find broken links |
 | [seo-audit-report](skills/seo-audit-report) | Run comprehensive SEO audits with actionable reports |
+| [dead-link-scanner](skills/dead-link-scanner) | Crawl websites and find broken links |
 | [sitemap-generator](skills/sitemap-generator) | Generate XML sitemaps by crawling a website |
+| [robots-txt-gen](skills/robots-txt-gen) | Generate, validate, and analyze robots.txt files |
+| [htaccess-gen](skills/htaccess-gen) | Generate .htaccess files for Apache (redirects, rewrites, security headers) |
+| [cors-tester](skills/cors-tester) | Test and debug CORS configurations on live URLs |
+| [http-status-ref](skills/http-status-ref) | HTTP status code reference, lookup, and header analyzer |
 
 ### 💼 Business & Productivity
 | Skill | Description |
 |-------|-------------|
 | [api-cost-tracker](skills/api-cost-tracker) | Track and optimize LLM API spending across providers |
-| [app-store-optimization](skills/app-store-optimization) | App Store keyword research and metadata optimization |
 | [competitor-monitor](skills/competitor-monitor) | Monitor competitor websites, pricing, and product changes |
 | [invoice-generator](skills/invoice-generator) | Generate professional PDF invoices |
 | [price-tracker](skills/price-tracker) | Track product prices and alert on changes |
 
-### 📱 iOS Development
-| Skill | Description |
-|-------|-------------|
-| [ios-app-publisher](skills/ios-app-publisher) | **Complete iOS app publishing lifecycle** — Xcode setup, code signing, App Store Connect, TestFlight, submission, post-launch |
-| [ios-ui-design](skills/ios-ui-design) | **iOS UI/UX design with SwiftUI/UIKit** — HIG compliance, design systems, accessibility, App Store visual optimization |
-
 ### 🔬 Research
 | Skill | Description |
 |-------|-------------|
-| [perplexity-research](skills/perplexity-research) | **Zero-cost deep research via Perplexity Pro** — browser automation, multi-source research, optional free-model verification |
-
-### 🧬 Agent Evolution
-| Skill | Description |
-|-------|-------------|
-| [skill-evolution](skills/skill-evolution) | **AutoSkill-powered self-evolving skills** — automatic extraction from conversations, versioned merging, vector retrieval |
+| [perplexity-research](skills/perplexity-research) | Zero-cost deep research via Perplexity Pro browser automation with optional free-model verification |
 
 ### 📝 Obsidian & Notes
 | Skill | Description |
@@ -199,6 +215,54 @@ openclaw gateway restart
 | [obsidian-organizer](skills/obsidian-organizer) | Organize and standardize Obsidian vaults |
 | [obsidian-daily-mai](skills/obsidian-daily-mai) | Obsidian daily note management |
 | [obsidian-openclaw-sync](skills/obsidian-openclaw-sync) | Sync OpenClaw config across iCloud devices |
+
+### 🛠️ Code Quality & Analysis
+| Skill | Description |
+|-------|-------------|
+| [code-metrics](skills/code-metrics) | Analyze code quality — lines of code, complexity, function counts, comment ratios |
+| [dep-audit](skills/dep-audit) | Audit dependencies for outdated packages, vulnerabilities, and license issues |
+| [dep-graph](skills/dep-graph) | Analyze and visualize project dependency trees |
+| [sql-formatter](skills/sql-formatter) | Format, minify, and lint SQL queries |
+| [regex-toolkit](skills/regex-toolkit) | Test, match, extract, replace, and explain regular expressions |
+
+### 📄 Data & File Formats
+| Skill | Description |
+|-------|-------------|
+| [json-diff](skills/json-diff) | Compare two JSON files and show differences |
+| [json-schema-toolkit](skills/json-schema-toolkit) | Validate JSON against schemas, generate schemas from samples, convert to TypeScript/Python |
+| [jrv-yaml-toolkit](skills/jrv-yaml-toolkit) | Validate, format, convert, merge, and query YAML files |
+| [yaml-validator](skills/yaml-validator) | Validate and lint YAML files for syntax errors and structural issues |
+| [toml-toolkit](skills/toml-toolkit) | Validate, query, convert, and merge TOML files |
+| [csv-toolkit](skills/csv-toolkit) | View, filter, sort, convert, and analyze CSV files |
+| [env-file-toolkit](skills/env-file-toolkit) | Manage .env files — validate, diff, template, merge, and check for missing keys |
+
+### 🔤 Text & Encoding
+| Skill | Description |
+|-------|-------------|
+| [text-toolkit](skills/text-toolkit) | Swiss-army knife for text manipulation — case conversion, slugify, extract emails/URLs, deduplicate |
+| [text-stats](skills/text-stats) | Word count, readability scores, reading time, vocabulary statistics |
+| [jrv-text-diff](skills/jrv-text-diff) | Compare text files side-by-side or unified with word-level diff |
+| [encoding-toolkit](skills/encoding-toolkit) | Encode/decode Base64, Hex, URL, HTML entities, ROT13, Binary, plus hash functions |
+| [lorem-gen](skills/lorem-gen) | Generate placeholder text — Lorem Ipsum, hipster, tech jargon |
+| [color-toolkit](skills/color-toolkit) | Convert, analyze, and generate colors — HEX, RGB, HSL, WCAG contrast, palette generation |
+
+### 🌍 Networking & IP
+| Skill | Description |
+|-------|-------------|
+| [ip-geo-toolkit](skills/ip-geo-toolkit) | IP geolocation, public IP lookup, reverse DNS, bulk processing |
+| [subnet-calc](skills/subnet-calc) | CIDR and subnet calculator — network address, broadcast, host range, IPv4/IPv6 |
+| [whois-toolkit](skills/whois-toolkit) | Domain WHOIS lookup — registrar, expiry dates, nameservers, registrant info |
+
+### 🧰 Utilities
+| Skill | Description |
+|-------|-------------|
+| [uuid-toolkit](skills/uuid-toolkit) | Generate, parse, validate UUIDs (v1/v3/v4/v5), ULIDs, and NanoIDs |
+| [file-hasher](skills/file-hasher) | Compute, verify, and compare file hashes (MD5, SHA-256, SHA-512) |
+| [timezone-toolkit](skills/timezone-toolkit) | Convert times between timezones, world clocks, meeting overlap finder |
+| [exif-toolkit](skills/exif-toolkit) | Read, write, and strip EXIF/image metadata from photos |
+| [crontab-wizard](skills/crontab-wizard) | Explain, generate, validate, and preview crontab expressions |
+| [jrv-mock-data](skills/jrv-mock-data) | Generate realistic fake data — names, emails, addresses, UUIDs, dates |
+| [jrv-http-client](skills/jrv-http-client) | Make HTTP requests with auth, headers, JSON body — agent-friendly curl replacement |
 
 ---
 
