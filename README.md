@@ -297,6 +297,15 @@ openclaw gateway restart
 
 ---
 
+## Related Projects
+
+| Project | Description |
+|---------|-------------|
+| [claw-mini](https://github.com/Johnnywang2001/claw-mini) | Zero-dependency Python CLI coding agent — full tool-calling agent in pure stdlib Python. No pip install needed, just `python -m claw`. |
+| [claw-code](https://github.com/Johnnywang2001/claw-code) | Clean-room rewrite of Claw Code's agent harness in Python and Rust. |
+
+---
+
 ## License
 
 MIT
