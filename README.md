@@ -1,6 +1,18 @@
+<div align="center">
+
 # OpenClaw Skills Collection
 
-74 skills for [OpenClaw](https://openclaw.ai) — the open-source AI agent operating system. Plus 7 setup guides that fundamentally improve how your agent thinks, remembers, and operates.
+**Superpowers for your AI agent.**
+74 production skills + 7 setup guides that upgrade how your OpenClaw agent thinks, remembers, and operates.
+
+[![Skills](https://img.shields.io/badge/skills-74-6366f1)](#skills-directory)
+[![Guides](https://img.shields.io/badge/setup_guides-7-10b981)](#-start-here-upgrade-your-agent)
+[![Platform](https://img.shields.io/badge/platform-OpenClaw-f5a524)](https://openclaw.ai)
+[![License](https://img.shields.io/badge/license-MIT-0af)](#license)
+
+</div>
+
+---
 
 Built and maintained by [@Johnnywang2001](https://github.com/Johnnywang2001).
 
